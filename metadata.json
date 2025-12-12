@@ -1,0 +1,5 @@
+{
+  "name": "AutoEscola Connect",
+  "description": "A prototype application for independent driving instructors to manage schedules and for students to book driving lessons. Features role-based views, appointment approval workflows, and availability management.",
+  "requestFramePermissions": []
+}
