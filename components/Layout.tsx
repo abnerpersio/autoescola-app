@@ -1,8 +1,8 @@
+import { Car, GraduationCap, RefreshCw, User } from 'lucide-react';
 import React from 'react';
+import { StorageService } from '../services/storage';
 import { UserRole } from '../types';
 import { Button } from './ui';
-import { Car, User, GraduationCap, RefreshCw } from 'lucide-react';
-import { StorageService } from '../services/storage';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, currentRole, onSwitchRole }) => {
   const handleReset = () => {
-    if(confirm("Deseja apagar todos os dados e reiniciar o protótipo?")) {
+    if (confirm('Deseja apagar todos os dados e reiniciar o protótipo?')) {
       StorageService.reset();
       window.location.reload();
     }
@@ -27,7 +27,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentRole, onSwitchR
             <div className="bg-primary-100 p-2 rounded-lg">
               <Car size={24} />
             </div>
-            <span className="font-bold text-lg hidden md:block tracking-tight">AutoEscola Connect</span>
+            <span className="font-bold text-lg hidden md:block tracking-tight">
+              Instrutor Connect
+            </span>
             <span className="font-bold text-lg md:hidden">Connect</span>
           </div>
 
@@ -36,8 +38,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentRole, onSwitchR
               <button
                 onClick={() => onSwitchRole('student')}
                 className={`flex items-center space-x-1 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
-                  currentRole === 'student' 
-                    ? 'bg-white text-primary-700 shadow-sm' 
+                  currentRole === 'student'
+                    ? 'bg-white text-primary-700 shadow-sm'
                     : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
@@ -47,8 +49,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentRole, onSwitchR
               <button
                 onClick={() => onSwitchRole('instructor')}
                 className={`flex items-center space-x-1 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
-                  currentRole === 'instructor' 
-                    ? 'bg-white text-primary-700 shadow-sm' 
+                  currentRole === 'instructor'
+                    ? 'bg-white text-primary-700 shadow-sm'
                     : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
@@ -56,8 +58,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentRole, onSwitchR
                 <span className="hidden sm:inline">Professor</span>
               </button>
             </div>
-            
-            <button 
+
+            <button
               onClick={handleReset}
               className="p-2 text-slate-400 hover:text-red-500 transition-colors"
               title="Resetar dados"
@@ -69,14 +71,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentRole, onSwitchR
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto px-4 py-8 max-w-5xl">
-        {children}
-      </main>
+      <main className="flex-1 container mx-auto px-4 py-8 max-w-5xl">{children}</main>
 
       {/* Footer */}
       <footer className="bg-white border-t border-slate-200 py-6 mt-auto">
         <div className="container mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>© 2024 AutoEscola Connect. Protótipo de Demonstração.</p>
+          <p>© 2024 Instrutor Connect. Protótipo de Demonstração.</p>
         </div>
       </footer>
     </div>

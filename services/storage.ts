@@ -1,14 +1,22 @@
 import { Appointment, DaySchedule } from '../types';
 
-const APPOINTMENTS_KEY = 'autoescola_appointments';
-const SCHEDULE_KEY = 'autoescola_schedule';
+const APPOINTMENTS_KEY = 'instrutor_appointments';
+const SCHEDULE_KEY = 'instrutor_schedule';
 
 // Helper to simulate delay
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Default hours available: 08:00 to 18:00
 export const WORKING_HOURS = [
-  '08:00', '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00', '17:00'
+  '08:00',
+  '09:00',
+  '10:00',
+  '11:00',
+  '13:00',
+  '14:00',
+  '15:00',
+  '16:00',
+  '17:00',
 ];
 
 export const StorageService = {
@@ -25,7 +33,7 @@ export const StorageService = {
 
   updateAppointmentStatus: (id: string, status: Appointment['status']) => {
     const appointments = StorageService.getAppointments();
-    const index = appointments.findIndex(a => a.id === id);
+    const index = appointments.findIndex((a) => a.id === id);
     if (index !== -1) {
       appointments[index].status = status;
       localStorage.setItem(APPOINTMENTS_KEY, JSON.stringify(appointments));
@@ -39,8 +47,8 @@ export const StorageService = {
 
   toggleDayBlock: (date: string) => {
     const schedules = StorageService.getScheduleOverrides();
-    const existingIndex = schedules.findIndex(s => s.date === date);
-    
+    const existingIndex = schedules.findIndex((s) => s.date === date);
+
     if (existingIndex !== -1) {
       schedules[existingIndex].isBlocked = !schedules[existingIndex].isBlocked;
     } else {
@@ -53,5 +61,5 @@ export const StorageService = {
   reset: () => {
     localStorage.removeItem(APPOINTMENTS_KEY);
     localStorage.removeItem(SCHEDULE_KEY);
-  }
+  },
 };
